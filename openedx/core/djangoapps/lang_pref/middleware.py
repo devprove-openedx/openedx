@@ -41,15 +41,8 @@ class LanguagePreferenceMiddleware(MiddlewareMixin):
             else:
                 request._anonymous_user_cookie_lang = cookie_lang  # lint-amnesty, pylint: disable=protected-access
 
-            accept_header = request.META.get(LANGUAGE_HEADER, None)
-            if accept_header:
-                current_langs = parse_accept_lang_header(accept_header)
-                # Promote the cookie_lang over any language currently in the accept header
-                current_langs = [(lang, qvalue) for (lang, qvalue) in current_langs if lang != cookie_lang]
-                current_langs.insert(0, (cookie_lang, 1))
-                accept_header = ",".join(f"{lang};q={qvalue}" for (lang, qvalue) in current_langs)
-            else:
-                accept_header = cookie_lang
+            accept_header = cookie_lang
+            
             request.META[LANGUAGE_HEADER] = accept_header
 
         # Apply language specified in SiteConfiguration, ignoring user preferences.
