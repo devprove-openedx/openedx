@@ -1446,7 +1446,7 @@ rules==3.5
     #   edx-enterprise
     #   edx-proctoring
     #   openedx-learning
-s3transfer==0.10.3
+s3transfer==0.14.0
     # via
     #   -r requirements/edx/base.txt
     #   boto3
