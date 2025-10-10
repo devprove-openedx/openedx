@@ -53,7 +53,7 @@ def released_languages():
     ]
     
     return [
-        Language(language_info[0], language_info[1])
+        Language(language_info["value"], language_info["label"])
         for language_info in languages
     ]
 
