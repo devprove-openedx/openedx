@@ -1110,7 +1110,7 @@ rules==3.5
     #   edx-enterprise
     #   edx-proctoring
     #   openedx-learning
-s3transfer==0.10.3
+s3transfer==0.14.0
     # via boto3
 sailthru-client==2.2.3
     # via edx-ace
