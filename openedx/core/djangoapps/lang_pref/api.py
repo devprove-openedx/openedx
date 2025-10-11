@@ -26,8 +26,8 @@ def header_language_selector_is_enabled():
 
 def footer_language_selector_is_enabled():
     """Return true if the footer language selector has been enabled via settings or site-specific configuration."""
-    #return get_value('SHOW_FOOTER_LANGUAGE_SELECTOR', settings.FEATURES.get('SHOW_FOOTER_LANGUAGE_SELECTOR', False))
-    return True
+    
+    return get_value('SHOW_FOOTER_LANGUAGE_SELECTOR', settings.FEATURES.get('SHOW_FOOTER_LANGUAGE_SELECTOR', False))
 
 
 def released_languages():
@@ -46,15 +46,27 @@ def released_languages():
         [Language(code='en', name=u'English'), Language(code='fr', name=u'Français')]
 
     """
+    dark_lang_config = DarkLangConfig.current()
+    released_language_codes = dark_lang_config.released_languages_list
+    default_language_code = settings.LANGUAGE_CODE
 
-    languages = [
-        {"value": "en", "label": "English"},
-        {"value": "uk", "label": "Українська"},
-    ]
-    
+    if default_language_code not in released_language_codes:
+        released_language_codes.append(default_language_code)
+
+    if dark_lang_config.enable_beta_languages:
+        beta_language_codes = dark_lang_config.beta_languages_list
+
+        if beta_language_codes not in released_language_codes:
+            released_language_codes = released_language_codes + beta_language_codes
+
+    released_language_codes.sort()
+
+    # Intersect the list of valid language tuples with the list
+    # of released language codes
     return [
-        Language(language_info["value"], language_info["label"])
-        for language_info in languages
+        Language(language_info[0], language_info[1])
+        for language_info in settings.LANGUAGES
+        if language_info[0] in released_language_codes
     ]
 
 def all_languages():
