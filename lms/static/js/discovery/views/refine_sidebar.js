@@ -3,6 +3,7 @@
         'jquery',
         'underscore',
         'backbone',
+        'gettext',
         'edx-ui-toolkit/js/utils/html-utils'
     ], function($, _, Backbone, HtmlUtils) {
         'use strict';
@@ -25,14 +26,22 @@
 
             facetName: function(key) {
                 // eslint-disable-next-line no-mixed-operators
-                return this.meanings[key] && this.meanings[key].name || key;
+                return gettext(this.meanings[key] && this.meanings[key].name || key);
             },
 
             termName: function(facetKey, termKey) {
-                return this.meanings[facetKey]
-                && this.meanings[facetKey].terms
-                // eslint-disable-next-line no-mixed-operators
-                && this.meanings[facetKey].terms[termKey] || termKey;
+                if(facetKey != "org"){ 
+                  return this.meanings[facetKey] && 
+                    this.meanings[facetKey].terms &&
+                    // eslint-disable-next-line no-mixed-operators
+                    this.meanings[facetKey].terms[termKey] || termKey;
+                }else{
+                  return gettext(
+                      this.meanings[facetKey] &&
+                      this.meanings[facetKey].terms &&
+                      this.meanings[facetKey].terms[termKey] || termKey
+                  );
+                }
             },
 
             renderOptions: function(options) {
