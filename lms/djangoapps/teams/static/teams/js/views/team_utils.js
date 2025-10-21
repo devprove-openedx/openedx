@@ -2,7 +2,7 @@
 (function(define) {
     'use strict';
 
-    define(['jquery', 'underscore', 'edx-ui-toolkit/js/utils/string-utils'],
+    define(['jquery', 'underscore', 'gettext', 'edx-ui-toolkit/js/utils/string-utils'],
         function($, _, StringUtils) {
             return {
 
