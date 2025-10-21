@@ -20,7 +20,7 @@
                     return map;
                 },
 
-                teamCapacityText: function(memberCount, maxMemberCount) {
+                /*teamCapacityText: function(memberCount, maxMemberCount) {
                     var formatString;
                     var parameters = {memberCount: memberCount};
                     if (maxMemberCount === null) {
@@ -38,6 +38,26 @@
                         ),
                         parameters, true
                     );
+                },*/
+                
+                teamCapacityText: function(memberCount, maxMemberCount) {
+                    var parameters = {
+                        memberCount: memberCount
+                    };
+                
+                    var membersLabel = gettext('Учасники');
+                
+                    var formatString;
+                    if (maxMemberCount !== null) {
+                        parameters.maxMemberCount = maxMemberCount;
+                        formatString = '{membersLabel}: {memberCount} / {maxMemberCount}';
+                    } else {
+                        formatString = '{membersLabel}: {memberCount}';
+                    }
+                
+                    parameters.membersLabel = membersLabel;
+                
+                    return StringUtils.interpolate(formatString, parameters, true);
                 },
 
                 isUserMemberOfTeam: function(memberships, requestUsername) {
