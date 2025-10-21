@@ -5,7 +5,7 @@
         'backbone',
         'gettext',
         'edx-ui-toolkit/js/utils/html-utils'
-    ], function($, _, Backbone, HtmlUtils) {
+    ], function($, _, Backbone, gettext, HtmlUtils) {
         'use strict';
 
         return Backbone.View.extend({
