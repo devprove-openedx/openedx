@@ -31,7 +31,7 @@
 
             termName: function(facetKey, termKey) {
                 if(facetKey == "org"){
-                  return termKey
+                  return termKey;
                 }
                 
                 return gettext(termKey);
