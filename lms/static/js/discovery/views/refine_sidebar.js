@@ -26,22 +26,15 @@
 
             facetName: function(key) {
                 // eslint-disable-next-line no-mixed-operators
-                return gettext(this.meanings[key] && this.meanings[key].name || key);
+                return gettext(key);
             },
 
             termName: function(facetKey, termKey) {
-                if(facetKey != "org"){ 
-                  return this.meanings[facetKey] && 
-                    this.meanings[facetKey].terms &&
-                    // eslint-disable-next-line no-mixed-operators
-                    this.meanings[facetKey].terms[termKey] || termKey;
-                }else{
-                  return gettext(
-                      this.meanings[facetKey] &&
-                      this.meanings[facetKey].terms &&
-                      this.meanings[facetKey].terms[termKey] || termKey
-                  );
+                if(facetKey == "org"){
+                  return termKey
                 }
+                
+                return gettext(termKey);
             },
 
             renderOptions: function(options) {
