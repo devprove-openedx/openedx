@@ -136,6 +136,11 @@ class CourseOverview(TimeStampedModel):
     # Proctoring
     enable_proctored_exams = models.BooleanField(default=False)
     proctoring_provider = models.TextField(null=True)
+    proctoring_event_number = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True
+    )
     proctoring_escalation_email = models.TextField(null=True)
     allow_proctoring_opt_out = models.BooleanField(default=False)
 
@@ -258,6 +263,7 @@ class CourseOverview(TimeStampedModel):
 
         course_overview.enable_proctored_exams = course.enable_proctored_exams
         course_overview.proctoring_provider = course.proctoring_provider
+        course_overview.proctoring_event_number = course.proctoring_event_number
         course_overview.proctoring_escalation_email = course.proctoring_escalation_email
         course_overview.allow_proctoring_opt_out = course.allow_proctoring_opt_out
 
@@ -275,7 +281,7 @@ class CourseOverview(TimeStampedModel):
 
         if not CatalogIntegration.is_enabled():
             course_overview.language = course.language
-
+            
         return course_overview
 
     @classmethod
