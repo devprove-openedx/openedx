@@ -875,6 +875,11 @@ class CourseFields:  # lint-amnesty, pylint: disable=missing-class-docstring
         deprecated=EXAM_SETTINGS_HTML_VIEW_ENABLED
     )
 
+    proctoring_event_number = String(
+        display_name=_("Proctoring Event Number"),
+        scope=Scope.settings
+    )
+    
     proctoring_escalation_email = EmailString(
         display_name=_("Proctortrack Exam Escalation Contact"),
         help=_(
