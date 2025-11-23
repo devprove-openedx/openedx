@@ -91,6 +91,7 @@ class ProctoredExamSettingsView(APIView):
         'enable_proctored_exams',
         'allow_proctoring_opt_out',
         'proctoring_provider',
+        'proctoring_event_number',
         'proctoring_escalation_email',
         'create_zendesk_tickets',
     ]
