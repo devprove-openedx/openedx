@@ -30,11 +30,16 @@ def publish_event(event: dict):
 def send_login_event(sender, request, user, **kwargs):
     if not publisher: return None
         
+    ip = (
+        request.META.get("CF-Connecting-IP")
+        or request.META.get("REMOTE_ADDR")
+    )
+    
     event = {
         "event_type": "login",
         "user_id": user.id,
         "username": user.username,
-        "ip": request.META.get("REMOTE_ADDR"),
+        "ip": ip
     }
 
     publish_event(event)
