@@ -4,4 +4,4 @@ class PubsubConfig(AppConfig):
     name = "lms.djangoapps.pubsub"
 
     def ready(self):
-        import .signals
+        import lms.djangoapps.pubsub.signals
