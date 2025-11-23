@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 class PubsubConfig(AppConfig):
-    name = "djangoapps.pubsub"
+    name = "lms.djangoapps.pubsub"
 
     def ready(self):
         import .signals
