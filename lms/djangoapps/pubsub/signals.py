@@ -7,8 +7,11 @@ from django.contrib.auth.signals import user_logged_in
 import base64
 import json
 
-pubsub_key_base64 = settings.PUBSUB_KEY
-pubsub_key = json.loads(base64.b64decode(pubsub_key_base64)) if pubsub_key_base64 else None
+try:
+    decoded = base64.b64decode(settings.PUBSUB_KEY)
+    pubsub_key = json.loads(decoded.decode("utf-8"))
+except:
+    pubsub_key = None
 
 publisher = pubsub_v1.PublisherClient.from_service_account_info(pubsub_key)
 topic_path = publisher.topic_path(settings.PUBSUB_PROJECT_ID, settings.PUBSUB_TOPIC_NAME)
