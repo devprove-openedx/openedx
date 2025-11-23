@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
-class EventsConfig(AppConfig):
-    name = "djangoapps.events"
+class PubsubConfig(AppConfig):
+    name = "djangoapps.pubsub"
 
     def ready(self):
         import .signals
