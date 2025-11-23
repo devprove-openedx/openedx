@@ -1,6 +1,9 @@
 from google.cloud import pubsub_v1
 from django.dispatch import receiver
 from django.conf import settings
+
+from django.contrib.auth.signals import user_logged_in
+
 import json
 
 publisher = pubsub_v1.PublisherClient()
