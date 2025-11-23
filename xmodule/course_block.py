@@ -877,6 +877,7 @@ class CourseFields:  # lint-amnesty, pylint: disable=missing-class-docstring
 
     proctoring_event_number = String(
         display_name=_("Proctoring Event Number"),
+        help="",
         scope=Scope.settings
     )
     
