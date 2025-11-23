@@ -3384,6 +3384,7 @@ INSTALLED_APPS = [
     'openedx.core.djangoapps.notifications',
 
     'openedx_events',
+    'lms.djangoapps.pubsub',
 
     # Learning Core Apps, used by v2 content libraries (content_libraries app)
     "openedx_learning.apps.authoring.collections",
