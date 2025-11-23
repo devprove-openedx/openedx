@@ -5545,4 +5545,4 @@ LMS_COMM_DEFAULT_FROM_EMAIL = "no-reply@example.com"
 
 PUBSUB_PROJECT_ID = 'project_id'
 PUBSUB_TOPIC_NAME = 'topic_id'
-PUBSUB_KEY = 'base64_encoded_key'
+PUBSUB_KEY = 'YmFzZTY0X2VuY29kZWRfa2V5'
