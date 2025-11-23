@@ -5542,3 +5542,6 @@ DISABLED_COUNTRIES = []
 
 
 LMS_COMM_DEFAULT_FROM_EMAIL = "no-reply@example.com"
+
+PUBSUB_PROJECT_ID = 'project_id'
+PUBSUB_TOPIC_NAME = 'topic_id'
