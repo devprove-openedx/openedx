@@ -10,11 +10,11 @@ import json
 try:
     decoded = base64.b64decode(settings.PUBSUB_KEY)
     pubsub_key = json.loads(decoded.decode("utf-8"))
-except:
-    pubsub_key = None
 
-publisher = pubsub_v1.PublisherClient.from_service_account_info(pubsub_key)
-topic_path = publisher.topic_path(settings.PUBSUB_PROJECT_ID, settings.PUBSUB_TOPIC_NAME)
+    publisher = pubsub_v1.PublisherClient.from_service_account_info(pubsub_key)
+    topic_path = publisher.topic_path(settings.PUBSUB_PROJECT_ID, settings.PUBSUB_TOPIC_NAME)
+except:
+    publisher = None
 
 def publish_event(event: dict):
     if not publisher: return None
