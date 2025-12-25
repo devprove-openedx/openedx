@@ -17,14 +17,13 @@ except:
     publisher = None
 
 def publish_event(event: dict):
-    if not publisher: return None
+    if not publisher: return
         
     try:
         data = json.dumps(event).encode("utf-8")
-        future = publisher.publish(topic_path, data=data)
-        return future.result()
-    except:
-        return None
+        
+        publisher.publish(topic_path, data=data)
+    except: return
 
 @receiver(user_logged_in)
 def send_login_event(sender, request, user, **kwargs):
